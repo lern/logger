@@ -18,8 +18,9 @@
   },
   "license": "MIT",
   "dependencies": {
-    "passthrough-counter": "^1.0.0",
+    "bytes": "1",
     "humanize-number": "~0.0.1",
-    "bytes": "1"
+    "passthrough-counter": "^1.0.0",
+    "winston": "^1.0.0"
   }
 }

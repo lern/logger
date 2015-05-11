@@ -5,7 +5,7 @@
 var Counter = require('passthrough-counter');
 var humanize = require('humanize-number');
 var bytes = require('bytes');
-var logger = require('winston');
+var winston = require('winston');
 
 /**
  * TTY check for dev format.
@@ -39,7 +39,7 @@ function dev(opts) {
   return function *logger(next) {
     // request
     var start = new Date;
-    logger.info('  \x1B[90m<-- \x1B[;1m%s\x1B[0;90m %s\x1B[0m', this.method, this.url);
+    winston.info('  \x1B[90m<-- \x1B[;1m%s\x1B[0;90m %s\x1B[0m', this.method, this.url);
 
     try {
       yield next;
@@ -108,7 +108,7 @@ function log(ctx, start, len, err, event) {
     : event === 'close' ? '\x1B[33m-x-'
     : '\x1B[90m-->';
 
-  logger.info('  ' + upstream + ' \x1B[;1m%s\x1B[0;90m %s \x1B[' + c + 'm%s\x1B[90m %s %s\x1B[0m',
+  winston.info('  ' + upstream + ' \x1B[;1m%s\x1B[0;90m %s \x1B[' + c + 'm%s\x1B[90m %s %s\x1B[0m',
     ctx.method,
     ctx.originalUrl,
     status,

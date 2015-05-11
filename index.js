@@ -39,7 +39,7 @@ function dev(opts) {
   return function *logger(next) {
     // request
     var start = new Date;
-    winston.info('  \x1B[90m<-- \x1B[;1m%s\x1B[0;90m %s\x1B[0m', this.method, this.url);
+    winston.info('  \x1B[90m<-- \x1B[;1m%s\x1B[0;90m %s\x1B[0m', this.method, this.url, this.request.query || {}, this.request.body || {});
 
     try {
       yield next;
